@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
-
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Reflection;
 
 namespace DecisionSupportSystemsWPF.DataTableViewMode
 {
@@ -72,24 +73,24 @@ namespace DecisionSupportSystemsWPF.DataTableViewMode
 
                 if (extension.Equals("xls") || extension.Equals("xlsx"))
                 {
-                    #region
-                    //Excel.Application excelApp = new Excel.Application();
-                    //Excel.Workbook workbook = excelApp.Workbooks.Open(FilePath);
-                    //Excel.Worksheet worksheet = (Excel.Worksheet)workbook.Sheets[0];
-                    //Excel.Range range = worksheet.UsedRange;
+                   // #region
+                    Excel.Application excelApp = new Excel.Application();
+                    Excel.Workbook workbook = excelApp.Workbooks.Open(FilePath);
+                    Excel.Worksheet worksheet = (Excel.Worksheet)workbook.Sheets[0];
+                    Excel.Range range = worksheet.UsedRange;
 
-                    //for (int row = 2; row <= range.Rows.Count; row++)
-                    //{
-                    //    DataRow dr = datatable.NewRow();
-                    //    for (int column = 1; column <= range.Columns.Count; column++)
-                    //    {
-                    //        dr[column - 1] = (range.Cells[row, column] as Excel.Range).Value2.ToString();
-                    //    }
-                    //    datatable.Rows.Add(dr);
-                    //}
-                    //workbook.Close(true, Missing.Value, Missing.Value);
-                    //excelApp.Quit();
-                    #endregion
+                    for (int row = 2; row <= range.Rows.Count; row++)
+                    {
+                        DataRow dr = datatable.NewRow();
+                        for (int column = 1; column <= range.Columns.Count; column++)
+                        {
+                            dr[column - 1] = (range.Cells[row, column] as Excel.Range).Value2.ToString();
+                        }
+                        datatable.Rows.Add(dr);
+                    }
+                    workbook.Close(true, Missing.Value, Missing.Value);
+                    excelApp.Quit();
+                  //  #endregion
                 }
 
                 else

@@ -76,6 +76,14 @@ namespace DecisionSupportSystemsWPF
             vm.Row = row.Row;
             vm.RowIndex = tableDataGrid.SelectedIndex;
         }
+
+        private void Chart2d_Click(object sender, RoutedEventArgs e)
+        {
+
+            ChartWindow window = new ChartWindow();
+            window.ShowDialog();
+
+        }
     }
 
 }

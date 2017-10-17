@@ -41,6 +41,9 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+                <WrapPanel Grid.Row="1">
+                    <Button Width="auto" Click="Chart2d_Click" >Wykres</Button>
+                </WrapPanel>
                 <DataGrid Grid.Row="3" Name="tableDataGrid" ItemsSource="{Binding ModifiedData, UpdateSourceTrigger=PropertyChanged}"/>
 
             </Grid>
