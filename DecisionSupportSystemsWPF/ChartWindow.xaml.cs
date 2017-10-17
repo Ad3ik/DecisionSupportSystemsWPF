@@ -56,8 +56,12 @@ namespace DecisionSupportSystemsWPF
             extPro.Start();
 
             StreamWriter gnupStWr = extPro.StandardInput;
-            gnupStWr.WriteLine("set xlabel \"x\" font \"Times, 12\"");
-            gnupStWr.WriteLine("\n splot '-' title 'test' w  lines ls 1 \n");
+            //gnupStWr.WriteLine("plot '-' w p ls 1, '-' w p ls 2, '-' w p ls 3");
+            gnupStWr.WriteLine("plot '-' title 'test' w  lines ls 1 \n");
+
+
+            //gnupStWr.WriteLine("set xlabel \"x\" font \"Times, 12\"");
+            // gnupStWr.WriteLine("\n splot '-' title 'test' w  lines ls 1 \n");
 
             for (int r = 0; r < table.Rows.Count; r++)
             {
