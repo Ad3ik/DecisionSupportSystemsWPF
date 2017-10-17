@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data;
 
 namespace DecisionSupportSystemsWPF
 {
@@ -57,8 +58,8 @@ namespace DecisionSupportSystemsWPF
                 if (filePathTextbox.Text != null)
                 {
                     fileGrid.Visibility = Visibility.Hidden;
-                   // tableGrid.Visibility = Visibility.Visible;
-                   // scrollview.Visibility = Visibility.Visible;
+                    tableGrid.Visibility = Visibility.Visible;
+                    scrollview.Visibility = Visibility.Visible;
                     this.Height = 600;
                     this.Width = 800;
                 }
@@ -67,6 +68,13 @@ namespace DecisionSupportSystemsWPF
                     MessageBox.Show("Wybierz plik");
                 }
             
+        }
+
+        private void SelectedRow_Click(object sender, SelectionChangedEventArgs e)
+        {
+            DataRowView row = (DataRowView)tableDataGrid.SelectedItem;
+            vm.Row = row.Row;
+            vm.RowIndex = tableDataGrid.SelectedIndex;
         }
     }
 
